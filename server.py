@@ -85,7 +85,7 @@ class Server:
         try:
             self.server = ThreadingHTTPServer(
                 ('', self.port), SimpleHTTPRequestHandler
-            ).serve_forever()
+            )
 
             print('🚀 SERVIDOR RODANDO!', end='\n\n')
             self.server.serve_forever()
