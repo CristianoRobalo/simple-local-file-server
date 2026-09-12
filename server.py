@@ -16,7 +16,6 @@ class Server:
     def __init__(self, port=8080):
         self.port = port
         self.server: ThreadingHTTPServer | None = None
-        self.running = True
 
     def local_ip(self) -> str | None:
         """
@@ -48,10 +47,6 @@ class Server:
     def shutdown_server(self):
         """Procede o desligamento do server."""
 
-        if not self.running:
-            return
-
-        self.running = False
         print('🛑 Encerrando servidor...')
 
         if self.server:
