@@ -43,7 +43,6 @@ class Server:
 
         if self.server:
             self.server.server_close()
-            print('Concluído.')
 
         print('✅ Servidor finalizado com sucesso!')
         sys.exit(0)
