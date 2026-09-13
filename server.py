@@ -34,17 +34,10 @@ class Server:
     def register_signals(self):
         """Registra o handler para o desligamento do servidor."""
 
-        signal.signal(signal.SIGINT, self.shutdown_handler)
-        signal.signal(signal.SIGTERM, self.shutdown_handler)
+        signal.signal(signal.SIGINT, self.shutdown_server)
+        signal.signal(signal.SIGTERM, self.shutdown_server)
 
-    def shutdown_handler(self, sig: int, frame: FrameType | None):
-        """Handler para desligamento do servidor."""
-
-        sig_name = 'SIGINT (Ctrl+C)' if sig == signal.SIGINT else 'SIGTERM (kill)'
-        print(f'\n📢 Recebido {sig_name}')
-        self.shutdown_server()
-
-    def shutdown_server(self):
+    def shutdown_server(self, sig: int, frame: FrameType | None):
         """Procede o desligamento do server."""
 
         print('🛑 Encerrando servidor...')
