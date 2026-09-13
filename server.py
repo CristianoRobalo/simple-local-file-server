@@ -6,7 +6,6 @@ import os
 import signal
 import socket
 import sys
-from time import sleep
 from types import FrameType
 
 
@@ -43,12 +42,8 @@ class Server:
         print('🛑 Encerrando servidor...')
 
         if self.server:
-            print('⏳ Aguardando finalização de requisições...')
-            sleep(1)
-
-            print('🔌 Fechando conexões...')
-            self.server.shutdown()
             self.server.server_close()
+            print('Concluído.')
 
         print('✅ Servidor finalizado com sucesso!')
         sys.exit(0)
@@ -85,9 +80,6 @@ class Server:
             else:
                 print(f'\n❌ Erro ao iniciar servidor: {e}')
                 sys.exit(1)
-
-        except KeyboardInterrupt:
-            self.shutdown_server()
 
         except Exception as e:
             print(f'\n❌ Erro inesperado: {e}')
